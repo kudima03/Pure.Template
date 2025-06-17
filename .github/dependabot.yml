@@ -6,10 +6,6 @@ updates:
     - "src/Tests/"
   schedule:
     interval: daily
-- package-ecosystem: "github-actions"
-  directory: "/"
-  schedule:
-    interval: daily
   reviewers:
     - "kudima03"
 - package-ecosystem: "github-actions"
