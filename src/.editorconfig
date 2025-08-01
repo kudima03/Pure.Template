@@ -6,7 +6,7 @@ root = true
 charset = utf-8
 indent_style = space
 indent_size = 4
-insert_final_newline = false
+insert_final_newline = true
 trim_trailing_whitespace = true
 end_of_line = lf
 
@@ -62,7 +62,10 @@ indent_style = tab
 [*.{cs,csx,cake,vb,vbx}]
 # Default Severity for all .NET Code Style rules below
 dotnet_analyzer_diagnostic.severity = warning
-
+dotnet_diagnostic.CA1716.severity = none
+dotnet_diagnostic.CA1859.severity = none
+dotnet_diagnostic.CA1305.severity = none
+dotnet_diagnostic.CA1720.severity = none
 ##########################################
 # Language Rules
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/language-rules
@@ -106,7 +109,7 @@ dotnet_style_coalesce_expression = true:warning
 dotnet_style_null_propagation = true:warning
 dotnet_style_prefer_is_null_check_over_reference_equality_method = true:warning
 # File header preferences
-# file_header_template = <copyright file="{fileName}" company="PROJECT-AUTHOR">\n© PROJECT-AUTHOR\n</copyright>
+# file_header_template = <copyright file="{fileName}" company="PROJECT-AUTHOR">\nÂ© PROJECT-AUTHOR\n</copyright>
 # If you use StyleCop, you'll need to disable SA1636: File header copyright text should match.
 # dotnet_diagnostic.SA1636.severity = none
 # Undocumented
@@ -178,6 +181,8 @@ csharp_style_unused_value_assignment_preference = discard_variable:warning
 # .NET formatting rules
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/formatting-rules#net-formatting-rules
 [*.{cs,csx,cake,vb,vbx}]
+# Max line length
+max_line_length = 90
 # Organize using directives
 dotnet_sort_system_directives_first = true
 dotnet_separate_import_directive_groups = false
