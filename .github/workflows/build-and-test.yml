@@ -25,13 +25,21 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore -warnaserror /p:RunAnalyzers=true
-    - name: Code style check
+      run: dotnet build --no-restore -warnaserror
+    - name: Code style check by dotnet format
       run: dotnet format --verify-no-changes
+    - name: Install csharpier
+      run: dotnet tool install -g csharpier
+    - name: Code style check by csharpier
+      run: csharpier check .
     - name: Test
       run: dotnet test --no-build --verbosity normal --logger trx --collect:"XPlat Code Coverage"
+    - name: Install dotnet-stryker globally
+      run: dotnet tool install -g dotnet-stryker
+    - name: Run mutation test
+      run: dotnet stryker --mutation-level Complete --break-at 99
     - name: Combine Coverage Reports
-      uses: danielpalme/ReportGenerator-GitHub-Action@5.4.11
+      uses: danielpalme/ReportGenerator-GitHub-Action@5.4.10
       with:
         reports: "**/*.cobertura.xml"
         targetdir: "${{ github.workspace }}"
