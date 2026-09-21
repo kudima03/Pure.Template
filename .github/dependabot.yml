@@ -2,8 +2,8 @@ version: 2
 updates:
 - package-ecosystem: nuget
   directories:
-    - "src/"
-    - "src/Tests/"
+    - "src/<repo-name>"
+    - "src/Tests/<repo-name>.Tests"
   schedule:
     interval: daily
 - package-ecosystem: "github-actions"
